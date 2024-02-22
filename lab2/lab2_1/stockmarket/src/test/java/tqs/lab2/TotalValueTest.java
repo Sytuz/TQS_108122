@@ -11,6 +11,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 @ExtendWith(MockitoExtension.class)
 public class TotalValueTest {
     @Mock
@@ -29,7 +34,7 @@ public class TotalValueTest {
         stocksPortfolio.addStock(new Stock("GME", 1));
         stocksPortfolio.addStock(new Stock("TSLA", 3));
 
-        assertEquals(1300.0, stocksPortfolio.totalValue());
+        assertThat(1300.0, equalTo(stocksPortfolio.totalValue()));
         verify(stockMarket, times(3)).lookUpPrice(anyString());
     }
 }
