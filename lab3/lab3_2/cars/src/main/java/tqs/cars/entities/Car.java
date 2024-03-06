@@ -46,4 +46,21 @@ public class Car {
     public void setModel(String model) {
         this.model = model;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car)) return false;
+        Car car = (Car) o;
+        return getCarId().equals(car.getCarId()) && getMaker().equals(car.getMaker()) && getModel().equals(car.getModel());
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 31 * hash + Integer.parseInt(carId.toString());
+        hash = 31 * hash + (maker == null ? 0 : maker.hashCode());
+        hash = 31 * hash + (model == null ? 0 : model.hashCode());
+        return hash;
+    }
 }
