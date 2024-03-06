@@ -12,7 +12,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.TestPropertySource;
 
 import tqs.cars.entities.Car;
 import tqs.cars.repositories.CarRepository;
@@ -22,7 +22,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-@AutoConfigureTestDatabase
+//@AutoConfigureTestDatabase
+@TestPropertySource( locations = "application-integrationtest.properties")
 
 public class CarControllerTemplateIT {
 

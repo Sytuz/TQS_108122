@@ -1,0 +1,11 @@
+FROM mysql:latest
+
+ENV MYSQL_ROOT_PASSWORD=password
+
+# Create a new database and user
+ENV MYSQL_DATABASE=cars
+ENV MYSQL_USER=user
+ENV MYSQL_PASSWORD=mypassword
+
+# Expose the default MySQL port
+EXPOSE 3306
