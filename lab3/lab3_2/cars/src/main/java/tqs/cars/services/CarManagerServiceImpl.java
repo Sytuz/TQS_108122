@@ -2,6 +2,7 @@ package tqs.cars.services;
 
 import org.springframework.stereotype.Service;
 import tqs.cars.entities.Car;
+import tqs.cars.repositories.CarRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,19 +10,22 @@ import java.util.Optional;
 @Service
 public class CarManagerServiceImpl implements CarManagerService{
 
-    public CarManagerServiceImpl() {
+    private final CarRepository carRepository;
+
+    public CarManagerServiceImpl(CarRepository carRepository) {
+        this.carRepository = carRepository;
     }
 
     public Car save(Car car) {
-        return null;
+        return carRepository.save(car);
     }
 
     public List<Car> getAllCars() {
-        return null;
+        return carRepository.findAll();
     }
 
     public Optional<Car> getCarDetails(Long id) {
-        return null;
+        return carRepository.findById(id);
     }
     
 }

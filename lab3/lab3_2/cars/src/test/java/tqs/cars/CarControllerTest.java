@@ -35,9 +35,7 @@ public class CarControllerTest {
 
     @Test
     void whenPostCar_thenCreateCar( ) throws Exception {
-        Car someCar = new Car();
-        someCar.setMaker("Opel");
-        someCar.setModel("Corsa");
+        Car someCar = new Car("Opel", "Corsa");
 
         when( service.save(Mockito.any()) ).thenReturn(someCar);
 
