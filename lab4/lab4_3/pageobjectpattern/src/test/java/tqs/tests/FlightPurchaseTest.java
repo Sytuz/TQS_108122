@@ -11,7 +11,9 @@ package tqs.tests;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import static io.github.bonigarcia.seljup.BrowserType.FIREFOX;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -19,6 +21,8 @@ import io.github.bonigarcia.seljup.SeleniumJupiter;
 import tqs.webpages.HomePage;
 import tqs.webpages.PurchasePage;
 import tqs.webpages.ReservePage;
+
+import io.github.bonigarcia.seljup.DockerBrowser;
 
 @ExtendWith(SeleniumJupiter.class)
 public class FlightPurchaseTest {
@@ -46,4 +50,29 @@ public class FlightPurchaseTest {
 
     assertThat(purchasePage.success(), is(true));
   }
+
+  @Test
+  public void sameTestButWithDockerBrowser(@DockerBrowser(type = FIREFOX) WebDriver driver) {
+    HomePage homePage = new HomePage(driver);
+
+    homePage.selectFromPort("Boston");
+    homePage.selectToPort("New York");
+    homePage.submit();
+
+    assertThat(homePage.success(), is(true));
+
+    ReservePage reservePage = new ReservePage(driver);
+
+    reservePage.selectFlight(3);
+
+    assertThat(reservePage.success(), is(true));
+
+    PurchasePage purchasePage = new PurchasePage(driver);
+
+    purchasePage.fillForm("abc", "abc", "abc", "abc", "123123", "123123123123123", "abc");
+    purchasePage.submit();
+
+    assertThat(purchasePage.success(), is(true));
+  }
+
 }
