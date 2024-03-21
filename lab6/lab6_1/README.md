@@ -1,4 +1,4 @@
-# Solar Analysis
+# Sonar Analysis
 
 ## e) Has your project passed the defined quality gate? Elaborate your answer.
 
@@ -6,7 +6,7 @@ Yes, the project has passed the defined quality gate (built-in 'Sonar way').
 
 Reading through the report, there are 0 security issues, 0 reliability issues, but there are a total of 31 maintainability issues, most of them low to medium impact and 1 high impact. The technical debt to fix all of them is 1h39min.
 
-Checking the issue tags, most of them are related to junit issues, and a large part can be solved using SolarLint. The high impact issue is 'Define a constant instead of duplicating this literal "duplicate value: " 3 times.'.
+Checking the issue tags, most of them are related to junit issues, and a large part can be solved using SonarLint. The high impact issue is 'Define a constant instead of duplicating this literal "duplicate value: " 3 times.'.
 
 There is 1 security hotspot, which is due to a pseudorandom number generator being used (which is not cryptographically secure). This generator was implemented in the original code.
 
