@@ -5,9 +5,14 @@ on:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
+
+defaults:
+ run:
+  working-directory: ./homework/homework
+
 jobs:
   build:
-    name: Build and analyze
+    name: Build and analyze - Homework
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
