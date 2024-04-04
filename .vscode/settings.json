@@ -1,7 +1,7 @@
 {
     "java.configuration.updateBuildConfiguration": "automatic",
     "sonarlint.connectedMode.project": {
-        "connectionId": "http-localhost-9000-",
-        "projectKey": "cars"
+        "connectionId": "sytuz",
+        "projectKey": "Sytuz_TQS_108122"
     }
 }
