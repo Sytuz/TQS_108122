@@ -11,6 +11,10 @@
 #
 name: "CodeQL"
 
+defaults:
+  run:
+   working-directory: ./homework/homework
+
 on:
   push:
     branches: [ "main" ]
