@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head th:insert="~{fragments/layout :: headerFragment(title='Cancel Confirmation')}">
+        <title>Cancel Confirmation</title>
+    </head>
+
+    <body>
+        <div class="shadow-lg bg-image" th:style="'background-image: url(' + @{/images/WhiteTexture.jpg} + '); background-repeat: repeat; min-height: 100vh; background-position: center; background-size: cover;'">
+            <div th:insert="~{fragments/layout :: navbarFragment}"></div>
+            
+            <div style="padding-top: 100px;">
+                <div th:insert="~{fragments/layout :: confirmationFragment(message='Cancellation was successful!')}"></div>
+            </div>
+    </body>
+</html>

@@ -12,31 +12,38 @@
         <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
         <link th:href="@{/css/fontawesome.min.css}" rel="stylesheet">
         <link th:href="@{/css/navbar.css}" rel="stylesheet">
+        <link th:href="@{/css/bus.css}" rel="stylesheet">
 
         <script th:src="@{/js/bootstrap.min.js}"></script>
         <script th:src="@{/js/jquery.js}"></script>
     </head>
     <body>
         <div th:fragment="navbarFragment" id="navbar">
-<nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-2">
-    <div class="container d-flex justify-content-between align-items-center">
-        <a class="navbar-brand" th:href="@{/home}">
-            <img th:src="@{/images/QuickTripLogo.png}" alt="QuickTrip Logo" style="max-height: 50px;">
-        </a>
-        <div class="d-flex align-items-center">
-            <form class="d-flex me-4" role="search">
-                <input class="form-control me-2" type="search" placeholder="Reservation Code" aria-label="Check">
-                <button class="btn btn-success" type="submit">Check</button>
-            </form>
-            <select class="form-select ms-4" id="currencySelect" style="width: max-content;">
-                <option value="EUR">EUR</option>
-                <option value="USD">USD</option>
-                <option value="GBP">GBP</option>
-                <!-- Static currencies for now -->
-            </select>
+          <nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-2">
+              <div class="container d-flex justify-content-between align-items-center">
+                  <a class="navbar-brand" th:href="@{/home}">
+                      <img th:src="@{/images/QuickTripLogo.png}" alt="QuickTrip Logo" style="max-height: 50px;">
+                  </a>
+                  <div class="d-flex align-items-center">
+                      <form class="d-flex me-4" th:action="@{/reservation}" method="post">
+                          <input class="form-control me-2" th:name="code" type="text" placeholder="Reservation Code" aria-label="Check">
+                          <button class="btn btn-success" type="submit">Check</button>
+                      </form>
+                      <select class="form-select ms-4" id="currencySelect" style="width: max-content;">
+                          <option value="EUR">EUR</option>
+                          <option value="USD">USD</option>
+                          <option value="GBP">GBP</option>
+                          <!-- Static currencies for now -->
+                      </select>
+                  </div>
+              </div>
+          </nav>
         </div>
-    </div>
-</nav>
+
+        <div th:fragment="confirmationFragment" id="confirmation">
+          <div class="container">
+            <div class="alert alert-success" role="alert" th:text="${message}"></div>
+          </div>
         </div>
     </body>
 </html>

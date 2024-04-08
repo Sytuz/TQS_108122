@@ -1,0 +1,24 @@
+.bus-seat {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.reserved {
+    background-color: #ccc;
+}
+
+.premium {
+    background-color: #ffd014;
+    color: white;
+}
+
+.selected {
+    background-color: blue;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}

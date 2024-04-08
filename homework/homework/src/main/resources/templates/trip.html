@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head th:insert="~{fragments/layout :: headerFragment(title='Reservation Information')}">
+        <title>Reservation Information</title>
+    </head>
+
+    <body>
+        <div class="shadow-lg bg-image" th:style="'background-image: url(' + @{/images/WhiteTexture.jpg} + '); background-repeat: repeat; min-height: 100vh; background-position: center; background-size: cover;'">
+            <div th:insert="~{fragments/layout :: navbarFragment}"></div>
+
+            <div class="container d-flex align-items-center" style="height: 100vh;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card mt-4 shadow" style="width: 100%;">
+                            <div class="card-header bg-success text-white">
+                                Trip <a>12345</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="origin" class="form-label">Origin:</label>
+                                                    <input type="text" class="form-control" id="origin" value="Viseu" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="departure" class="form-label">Departure:</label>
+                                                    <input type="text" class="form-control" id="departure" value="15-04-2024 15:00" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="destination" class="form-label">Destination:</label>
+                                                    <input type="text" class="form-control" id="destination" value="Porto" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="arrival" class="form-label">Arrival:</label>
+                                                    <input type="text" class="form-control" id="arrival" value="15-04-2024 16:50" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label for="tickets" class="form-label">No. of passengers:</label>
+                                                    <input type="text" class="form-control" id="tickets" value="1" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label for="price" class="form-label">Total Price:</label>
+                                                    <input type="text" class="form-control" id="price" value="€120.00" readonly>
+                                                </div>
+                                            </div>  
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label for="seat" class="form-label">Seat:</label>
+                                                    <input type="text" class="form-control" id="seat" value="1" readonly>
+                                                </div>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-6">
+                                                <div class="bus-seat-layout">
+                                                    <!-- Seats will be added here -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row d-flex justify-content-end">
+                                    <div class="col-md-1">
+                                        <button class="btn btn-primary" style="width: 100%;" id="buy">Buy</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cancel Modal -->
+        <div class="modal fade" id="alterationModal" tabindex="-1" aria-labelledby="alterationModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="alterationModalLabel">Enter Alteration Code</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form th:action="@{/cancel}" method="post">
+                        <div class="modal-body">
+                            <input th:name="altCode" type="text" class="form-control" id="alterationCode" placeholder="Enter Alteration Code">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Confirm</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function() {
+                // Add seat numbers
+                var seatCount = 53; // Number of seats
+                var busSeatLayout = $('.bus-seat-layout');
+                var i = 1;
+                
+                for (var j = 1; j <= 5; j++) {
+                    var row = $('<div>').addClass('row');
+                    row.append($('<div>').addClass('col-1'))
+                    for (var k = 1; k <= 2; k++) {
+                        var seat = $('<div>').addClass('bus-seat').addClass('premium').text(i).attr('id', 's' + i);
+                        row.append($('<div>').addClass('col-2').append(seat));
+                        i++;
+                    }
+                    row.append($('<div>').addClass('col-2'))
+                    for (var k = 1; k <= 2; k++) {
+                        var seat = $('<div>').addClass('bus-seat').addClass('premium').text(i).attr('id', 's' + i);
+                        row.append($('<div>').addClass('col-2').append(seat));
+                        i++;
+                    }
+                    row.append($('<div>').addClass('col-1'))
+
+                    busSeatLayout.append(row);
+                }
+
+                for (var j = 1; j <= 2; j++) {
+                    var row = $('<div>').addClass('row');
+                    row.append($('<div>').addClass('col-1'))
+                    for (var k = 1; k <= 2; k++) {
+                        var seat = $('<div>').addClass('bus-seat').text(i).attr('id', 's' + i);
+                        row.append($('<div>').addClass('col-2').append(seat));
+                        i++;
+                    }
+                    row.append($('<div>').addClass('col-7'))
+
+                    busSeatLayout.append(row);
+                }
+
+                for (var j = 1; j <= 6; j++) {
+                    var row = $('<div>').addClass('row');
+                    row.append($('<div>').addClass('col-1'))
+                    for (var k = 1; k <= 2; k++) {
+                        var seat = $('<div>').addClass('bus-seat').text(i).attr('id', 's' + i);
+                        row.append($('<div>').addClass('col-2').append(seat));
+                        i++;
+                    }
+                    row.append($('<div>').addClass('col-2'))
+                    for (var k = 1; k <= 2; k++) {
+                        var seat = $('<div>').addClass('bus-seat').addClass('reserved').text(i).attr('id', 's' + i);
+                        row.append($('<div>').addClass('col-2').append(seat));
+                        i++;
+                    }
+                    row.append($('<div>').addClass('col-1'))
+
+                    busSeatLayout.append(row);
+                }
+
+                var row_f = $('<div>').addClass('row');
+                row_f.append($('<div>').addClass('col-1'))
+                for (var j = 1; j <= 5; j++) {
+                    var seat = $('<div>').addClass('bus-seat').addClass('reserved').text(i).attr('id', 's' + i);
+                    row_f.append($('<div>').addClass('col-2').append(seat));
+                    i++;
+                }
+                row_f.append($('<div>').addClass('col-1'))
+                busSeatLayout.append(row_f);
+            
+                // Select a default seat
+                $('.bus-seat:first').addClass('selected');
+            
+                // Click event to select/deselect seat
+                $('.bus-seat').click(function() {
+                    if (!$(this).hasClass('reserved') && !$(this).hasClass('selected')) {
+                        $('.bus-seat').removeClass('selected');
+                        // Select the clicked seat
+                        $(this).addClass('selected');
+                        $('#seat').val($(this).text());
+                        if ($(this).hasClass('premium')) {
+                            $('#price').val('€' + '120.00');
+                        } else {
+                            $('#price').val('€' + '100.00');
+                        }
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

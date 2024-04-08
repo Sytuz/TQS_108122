@@ -92,7 +92,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-1">
-                                        <button class="btn btn-success" style="height: 100%;">Book Now</button>
+                                        <form th:action="@{/trip{code}(code=${code})}" style="height: 100%;">
+                                            <button th:name="code" th:value="placeholder" class="btn btn-success" style="height: 100%;">Book Now</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
