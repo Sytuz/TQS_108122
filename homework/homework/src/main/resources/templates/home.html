@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head th:insert="~{fragments/layout :: headerFragment(Home)}">
+        <title>Home</title>
+    </head>
+
+    <body>
+        <div class="shadow-lg bg-image" th:style="'background-image: url(' + @{/images/BusAtNight.jpg} + '); height: 60vh; background-position: center; background-size: cover;'">
+            <div th:insert="~{fragments/layout :: navbarFragment}"></div>
+        </div>
+        
+        <div th:style="'background-image: url(' + @{/images/WhiteTexture.jpg} + '); background-size: cover; background-repeat: repeat; min-height: 40vh'">
+            <div class="container shadow-lg pt-4" style="background-color: rgb(215, 215, 215);">
+                <div class="row mx-2">
+                    <div class="col-lg-4">
+                        <div class="mb-3">
+                            <label for="origin" class="form-label">Origin:</label>
+                            <select class="form-select" id="origin">
+                                <option selected>Select origin city</option>
+                                <option value="1">City 1</option>
+                                <option value="2">City 2</option>
+                                <option value="3">City 3</option>
+                                <!-- Dummy values -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">  
+                        <div class="mb-3">
+                            <label for="destination" class="form-label">Destination:</label>
+                            <select class="form-select" id="destination">
+                                <option selected>Select destination city</option>
+                                <option value="1">City 1</option>
+                                <option value="2">City 2</option>
+                                <option value="3">City 3</option>
+                                <!-- Dummy values -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="mb-3">
+                            <label for="tickets" class="form-label">No. of passengers:</label>
+                            <input type="number" class="form-control" id="tickets" min="1" max="10" value="1">
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Date:</label>
+                            <input type="date" class="form-control" id="date">
+                        </div>
+                    </div>
+                    <div class="col-lg-12 mb-3 d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary">Apply Filters</button>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card shadow-lg mt-4">
+                            <div class="card-header bg-primary text-white">
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h6>Origin:</h6>
+                                                <p>New York City</p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h6>Destination:</h6>
+                                                <p>Los Angeles</p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h6>Price:</h6>
+                                                <p>€50</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h6>Departure Time:</h6>
+                                                <p>10:00 AM</p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h6>Arrival Time:</h6>
+                                                <p>4:00 PM</p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h6>Duration:</h6>
+                                                <p>6 hours</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button class="btn btn-success" style="height: 100%;">Book Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Additional trip cards can be added similarly -->
+                </div>
+            </div>            
+        </div>
+
+        <script>
+            $(document).ready(function() {
+                $('#origin').change(function() {
+                    var selectedOrigin = $(this).val();
+                    $('#destination option').show();
+                    $('#destination option[value="' + selectedOrigin + '"]').hide();
+                });
+
+                $('#destination').change(function() {
+                    var selectedDestination = $(this).val();
+                    $('#origin option').show();
+                    $('#origin option[value="' + selectedDestination + '"]').hide();
+                });
+            });
+        </script>
+    </body>
+
+</html>
