@@ -19,6 +19,9 @@ import tqs.homework.entities.Trip;
 import tqs.homework.services.TripService;
 
 import java.util.List;
+import java.text.SimpleDateFormat;
+
+import java.text.ParseException;
 
 @RestController
 @RequestMapping("/api/trip")
@@ -62,13 +65,24 @@ public class TripRestController {
     }
 
     @GetMapping("/search")
-    @Operation(summary = "Get trips by arrival and departure names")
-    public ResponseEntity<List<Trip>> getTripsByArrNameAndDepName(@Parameter(description = "Arrival Name") @RequestParam("arrName") String arrName, @Parameter(description = "Departure Name") @RequestParam("depName") String depName) {
-        List<Trip> trips = tripService.getTripsByArrNameAndDepName(arrName, depName);
+    @Operation(summary = "Get trips by arrival and departure names, and departure date")
+    public ResponseEntity<List<Trip>> getTripsByArrNameAndDepNameAndDate(@Parameter(description = "Arrival Name") @RequestParam("arrName") String arrName, @Parameter(description = "Departure Name") @RequestParam("depName") String depName, @Parameter(description = "Date") @RequestParam("date") String date) throws ParseException{
+        List<Trip> trips = tripService.getTripsByArrNameAndDepNameAndDate(arrName, depName, new SimpleDateFormat("yyyy-mm-dd").parse(date));
         if (trips.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(trips, HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/cities")
+    @Operation(summary = "Get all cities")
+    public ResponseEntity<List<String>> getAllCities() {
+        List<String> cities = tripService.getAllCities();
+        if (cities.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(cities, HttpStatus.OK);
         }
     }
 
@@ -79,7 +93,7 @@ public class TripRestController {
         if (trips.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
-        return new ResponseEntity<>(trips, HttpStatus.OK);
+            return new ResponseEntity<>(trips, HttpStatus.OK);
         }
     }
 }

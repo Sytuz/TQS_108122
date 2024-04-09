@@ -21,10 +21,13 @@ import static io.restassured.RestAssured.when;
 import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Date;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.Mockito.*;
@@ -98,12 +101,12 @@ class TripRestControllerTest {
 
     @Test
     void givenTripsWhenGetTripsByArrNameAndDepNameThenReturnJsonArray() throws Exception {
-        when(service.getTripsByArrNameAndDepName("Lisboa", "Porto")).thenReturn(Arrays.asList(someTrip));
+        when(service.getTripsByArrNameAndDepNameAndDate("Lisboa", "Porto", new SimpleDateFormat("yyyy-mm-dd").parse("2024-04-10"))).thenReturn(Arrays.asList(someTrip));
 
         RestAssuredMockMvc
             .given()
             .when()
-                .get("/api/trip/search?arrName=Lisboa&depName=Porto")
+                .get("/api/trip/search?arrName=Lisboa&depName=Porto&date=2024-04-10")
             .then()
                 .statusCode(200)
                 .body("size()", is(1));

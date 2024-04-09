@@ -1,6 +1,7 @@
 package tqs.homework.services;
 
 import java.util.List;
+import java.util.Date;
 
 import tqs.homework.entities.Trip;
 
@@ -15,5 +16,5 @@ public interface TripService {
 
     List<Trip> getAllTrips();
 
-    List<Trip> getTripsByArrNameAndDepName(String arrName, String depName);
+    List<Trip> getTripsByArrNameAndDepNameAndDate(String arrName, String depName, Date date);
 }
