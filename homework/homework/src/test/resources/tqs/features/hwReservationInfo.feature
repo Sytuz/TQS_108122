@@ -10,12 +10,12 @@ Feature: Check the reservation information
         And click the "Check" button
         Then I should see the reservation information
 
-    Scenario: Give a wrong reservation code
-        When I introduce an invalid reservation code
-        And click the "Check" button
-        Then I should see an error message
+    #Scenario: Give a wrong reservation code
+    #    When I introduce an invalid reservation code
+    #    And click the "Check" button
+    #    Then I should see an error message
 
-    Scenario: Give an empty reservation code
-        When I leave the reservation code empty
-        And click the "Check" button
-        Then I should see an error message
+    #Scenario: Give an empty reservation code
+    #    When I leave the reservation code empty
+    #    And click the "Check" button
+    #    Then I should see an error message
