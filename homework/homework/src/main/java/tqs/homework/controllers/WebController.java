@@ -15,7 +15,7 @@ public class WebController {
    }
 
    @PostMapping("/reservation")
-   public String reservation(@RequestParam(value = "code", required = true) String code) {
+   public String reservation(@RequestParam(value = "resCode", required = true) String resCode) {
       return "reservation";
    }
 
@@ -25,7 +25,17 @@ public class WebController {
    }
 
    @GetMapping("/trip")
-   public String trip(@RequestParam(value = "code", required = true) String code) {
+   public String trip(@RequestParam(value = "tripCode", required = true) String tripCode) {
       return "trip";
+   }
+
+   @GetMapping("/payment")
+   public String payment() {
+      return "payment";
+   }
+
+   @PostMapping("/buy")
+   public String buy() {
+      return "buy";
    }
 }

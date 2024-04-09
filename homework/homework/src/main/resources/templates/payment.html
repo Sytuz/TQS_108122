@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head th:insert="~{fragments/layout :: headerFragment(title='Payment')}">
+        <title>Payment</title>
+    </head>
+
+    <body>
+        <div class="shadow-lg bg-image" th:style="'background-image: url(' + @{/images/WhiteTexture.jpg} + '); background-repeat: repeat; min-height: 100vh; background-position: center; background-size: cover;'">
+            <div th:insert="~{fragments/layout :: navbarFragment}"></div>
+
+            <div class="container d-flex align-items-center" style="height: 100vh;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card mt-4 shadow" style="width: 100%;">
+                            <div class="card-header bg-success text-white">
+                                Trip <a>12345</a> - Payment
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <form th:action="@{/buy}" method="post">
+                                            <div class="row justify-content-center">
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="name" class="form-label">Name:</label>
+                                                        <input th:name="name" type="text" class="form-control" id="name" placeholder="First and last name">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="email" class="form-label">Email:</label>
+                                                        <input th:name="email" type="text" class="form-control" id="email" placeholder="Example: abc@abc.com">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="nif" class="form-label">NIF:</label>
+                                                        <input th:name="nif" type="text" class="form-control" id="nif" placeholder="Example: 123456789">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="resCode" class="form-label">Reservation Code:</label>
+                                                        <input type="text" class="form-control" id="resCode" value="abcdef" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-4">
+                                                        <label for="price" class="form-label">Total Price:</label>
+                                                        <input type="text" class="form-control" id="price" value="€120.00" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-lg-1"></div>
+                                                    <div class="col-lg-4 btn selected">
+                                                        Credit Card
+                                                    </div>
+                                                    <div class="col-lg-2"></div>
+                                                    <div class="col-lg-4 btn btn-secondary" title="Not Implemented">
+                                                        MB Way
+                                                    </div>
+                                                    <div class="col-lg-1"></div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="card" class="form-label">Card Number:</label>
+                                                        <input th:name="card" type="text" class="form-control" id="card" placeholder="Example: 1234 5678 9012 3456">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="cardNumber" class="form-label">Name of Card Owner:</label>
+                                                        <input th:name="cardNumber" type="text" class="form-control" id="card" placeholder="Example: John Doe">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="exp" class="form-label">Expiration Date:</label>
+                                                        <input th:name="exp" type="text" class="form-control" id="exp" placeholder="Example: 12/24">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="cvv" class="form-label">CVV:</label>
+                                                        <input th:name="cvv" type="number" minlength="3" maxlength="3" class="form-control" id="cvv" placeholder="Example: 123">
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex justify-content-center col-md-12 mb-3">
+                                                    <button type="submit" class="btn btn-primary" style="width: 100%;" id="buy">Buy</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>                                
+                                </div>                             
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
