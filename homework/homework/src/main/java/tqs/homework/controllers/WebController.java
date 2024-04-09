@@ -7,9 +7,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import tqs.homework.services.ExchangeRateService;
-
-import org.springframework.web.bind.annotation.PathVariable;
-
 import java.util.Map;
 
 @Controller
@@ -22,7 +19,7 @@ public class WebController {
    }
 
    @GetMapping("/home")
-   public String home(Model model) throws Exception {
+   public String home(Model model) {
       Map<String, Double> exchangeRates = exchangeRateService.getExchangeRates();
       model.addAttribute("exchangeRates", exchangeRates);
       return "home";

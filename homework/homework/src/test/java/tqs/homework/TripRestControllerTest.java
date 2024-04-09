@@ -10,32 +10,22 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
-import tqs.homework.controllers.ReservationRestController;
 import tqs.homework.controllers.TripRestController;
 import tqs.homework.entities.Trip;
 import tqs.homework.services.TripService;
 
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
-import static io.restassured.RestAssured.*;
-import static io.restassured.RestAssured.when;
-import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
-import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Date;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(TripRestController.class)
 @ContextConfiguration(classes = { TripRestController.class })

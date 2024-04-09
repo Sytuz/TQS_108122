@@ -17,9 +17,6 @@ import tqs.homework.entities.Trip;
 
 
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
-import static io.restassured.RestAssured.*;
-import static io.restassured.RestAssured.when;
-import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 
 import java.time.LocalDate;
@@ -30,10 +27,6 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(ReservationRestController.class)
 @ContextConfiguration(classes = { ReservationRestController.class })

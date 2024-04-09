@@ -38,7 +38,7 @@ public class DefaultSuiteTest {
   }
   @Test
   public void hwReservationInfo() {
-    driver.get("http://localhost:8080/home/home");
+    driver.get("http://localhost:8080/home");
     driver.findElement(By.name("resCode")).click();
     driver.findElement(By.name("resCode")).sendKeys("abcdef");
     driver.findElement(By.name("resCode")).click();
