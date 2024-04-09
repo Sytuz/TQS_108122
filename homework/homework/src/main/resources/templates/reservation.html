@@ -8,7 +8,7 @@
         <div class="shadow-lg bg-image" th:style="'background-image: url(' + @{/images/WhiteTexture.jpg} + '); background-repeat: repeat; min-height: 100vh; background-position: center; background-size: cover;'">
             <div th:insert="~{fragments/layout :: navbarFragment}"></div>
 
-            <div class="container d-flex align-items-center" style="height: 100vh;">
+            <div class="container d-flex align-items-center" style="height: 100vh;" id="reservationInfo">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card mt-4 shadow">
@@ -68,10 +68,10 @@
                                 </div>
                                 <div class="row d-flex justify-content-end">
                                     <div class="col-md-1">
-                                        <button title="Not Implemented" class="btn btn-secondary" style="width: 100%;" id="alter">Alter</button>
+                                        <button title="Not Implemented" class="btn btn-secondary" style="width: 100%;" id="Alter">Alter</button>
                                     </div>
                                     <div class="col-md-1">
-                                        <button class="btn btn-danger" style="width: 100%;" id="cancel">Cancel</button>
+                                        <button class="btn btn-danger" style="width: 100%;" id="Cancel">Cancel</button>
                                     </div>
                                 </div>
                             </div>
@@ -91,11 +91,11 @@
                     </div>
                     <form th:action="@{/cancel}" method="post">
                         <div class="modal-body">
-                            <input th:name="altCode" type="text" class="form-control" id="alterationCode" placeholder="Enter Alteration Code">
+                            <input th:name="altCode" type="text" class="form-control" id="altCode" placeholder="Enter Alteration Code">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-danger">Confirm</button>
+                            <button type="submit" class="btn btn-danger" id="Confirm">Confirm</button>
                         </div>
                     </form>
                 </div>
@@ -104,7 +104,7 @@
 
         <script>
             $(document).ready(function() {
-              $('#cancel').click(function() {
+              $('#Cancel').click(function() {
                 $('#alterationModal').modal('show');
               });
             });

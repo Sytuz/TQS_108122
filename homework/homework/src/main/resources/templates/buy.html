@@ -6,9 +6,22 @@
 
     <body>
         <div class="shadow-lg bg-image" th:style="'background-image: url(' + @{/images/WhiteTexture.jpg} + '); background-repeat: repeat; min-height: 100vh; background-position: center; background-size: cover;'">
+            <div class="alert alert-info" role="alert" style="padding-top: 100px;" id="reservationInfo">
+                <h4 class="alert-heading">Reservation Important Information</h4>
+                <p>
+                    Please keep the following information in a safe place. You will need it to access your reservation.
+                </p>
+                <hr>
+                
+                <p>
+                    <strong>Reservation Code:</strong> abcdef
+                </p>
+                <p>
+                    <strong>Alteration Code:</strong> abcdefg
+            </div>
             <div th:insert="~{fragments/layout :: navbarFragment}"></div>
             
-            <div style="padding-top: 100px;">
+            <div>
                 <div th:insert="~{fragments/layout :: confirmationFragment(message='Purchase was successful!')}"></div>
             </div>
     </body>
