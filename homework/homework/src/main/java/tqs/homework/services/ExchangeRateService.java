@@ -36,7 +36,6 @@ public class ExchangeRateService {
             con.setRequestMethod("GET");
         } catch (Exception e) {
             // Handle exception
-            e.printStackTrace();
         }
         
         String exchangeRateJson = restTemplate.getForObject(API_URL, String.class);
@@ -63,7 +62,6 @@ public class ExchangeRateService {
             }
         } catch (Exception e) {
             // Handle exception
-            e.printStackTrace();
         }
         return exchangeRates;
     }
