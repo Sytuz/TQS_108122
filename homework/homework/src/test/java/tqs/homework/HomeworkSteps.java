@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.cucumber.java.Before;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Given;
@@ -25,7 +24,6 @@ public class HomeworkSteps {
     private WebDriver driver;
 
     private String strVar;
-    private int intVar;
     private double doubleVar;
 
     @Before
