@@ -56,4 +56,5 @@ public class TripServiceImpl implements TripService {
         }
         return cities;
     }
+    
 }

@@ -96,4 +96,16 @@ class ReservationRestControllerTest {
                 .body("size()", is(3));
     }
 
+    @Test
+    void givenTripIdWhenGetReservationsByTripIdThenReturnJsonArray() throws Exception {
+        when(service.getReservationsByTripId(1L)).thenReturn(reservations);
+
+        RestAssuredMockMvc
+            .given()
+            .when()
+                .get("/api/reservation/trip/1")
+            .then()
+                .statusCode(200)
+                .body("size()", is(3));
+    }
 }

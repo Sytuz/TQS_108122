@@ -8,7 +8,5 @@ import java.util.Date;
 
 @Repository
 public interface TripRepository extends JpaRepository<Trip, Long> {
-    public List<Trip> findByArrNameAndDepName(String arrName, String depName);
-
     public List<Trip> findByArrNameAndDepNameAndDate(String arrName, String depName, Date date);
 }

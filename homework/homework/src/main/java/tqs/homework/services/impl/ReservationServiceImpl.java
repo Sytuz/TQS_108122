@@ -36,4 +36,8 @@ public class ReservationServiceImpl implements ReservationService {
     public List<Reservation> getAllReservations() {
         return tripRepository.findAll();
     }
+
+    public List<Reservation> getReservationsByTripId(Long tripId) {
+        return tripRepository.findByTripId(tripId);
+    }
 }

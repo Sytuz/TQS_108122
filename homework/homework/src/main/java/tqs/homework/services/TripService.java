@@ -17,4 +17,6 @@ public interface TripService {
     List<Trip> getAllTrips();
 
     List<Trip> getTripsByArrNameAndDepNameAndDate(String arrName, String depName, Date date);
+
+    List<String> getAllCities();
 }

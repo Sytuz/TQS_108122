@@ -11,6 +11,8 @@ public class WebController {
 
    @GetMapping("/home")
    public String home() {
+      // Get all trips
+      
       return "home";
    }
 

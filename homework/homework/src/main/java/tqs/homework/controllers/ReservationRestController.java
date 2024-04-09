@@ -70,4 +70,15 @@ public class ReservationRestController {
         return new ResponseEntity<>(reservations, HttpStatus.OK);
         }
     }
+
+    @GetMapping("/trip/{tripId}")
+    @Operation(summary = "Get all Reservations by Trip ID")
+    public ResponseEntity<List<Reservation>> getReservationsByTripId(@Parameter(description = "Trip ID") @PathVariable("tripId") Long tripId) {
+        List<Reservation> reservations = reservationService.getReservationsByTripId(tripId);
+        if (reservations.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(reservations, HttpStatus.OK);
+        }
+    }
 }
